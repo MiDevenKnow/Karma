@@ -146,7 +146,6 @@ describe('Calculator', function() {
     });
 
     it('Should be able to clear after inserting a large positive intgeger', function(){
-      document.getElementById('minus').click();
       document.getElementById('n1').click();
       document.getElementById('n2').click();
       document.getElementById('n3').click();
