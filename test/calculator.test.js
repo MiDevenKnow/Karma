@@ -90,16 +90,6 @@ describe('Calculator', function() {
       expect(document.getElementById('display').value).toBe('36');
     });
 
-    it('Should not allow a double negation, an error must be thrown', function(){
-      expect(function(){
-        document.getElementById('minus').click();
-        document.getElementById('minus').click();
-        document.getElementById('n3').click();
-        document.getElementById('n6').click();
-        document.getElementById('equal').click();
-      }).toThrowError
-    });
-
     //  CLEAR SCREEN
 
     it('Should be able to clear the screen after doing no calculations', function(){
@@ -653,13 +643,12 @@ describe('Calculator', function() {
       expect(document.getElementById('display').value).toBe('63.246');
     });
 
-    it('Should not allow the square root of a negative integer, an error must be thrown', function(){
-      expect(function(){
-        document.getElementById('minus').click();
-        document.getElementById('n3').click();
-        document.getElementById('n6').click();
-        document.getElementById('sqrt').click();
-      }).toThrowError
+    it('Should not allow the square root of a negative integer', function(){
+      document.getElementById('minus').click();
+      document.getElementById('n3').click();
+      document.getElementById('n6').click();
+      document.getElementById('sqrt').click();
+      expect(document.getElementById('display').value).toBe('NaN');
     });
 
     it('Should return NaN for the square root of an empty display', function(){
