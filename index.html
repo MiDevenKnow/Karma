@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="lib/styles.css">
+  <title>Calculator</title>
+</head>
+<body>
+
+  <!-- calculator -->
+  <div id="fixture" class="calculator">
+
+    <!-- display -->
+    <input id="display" type="text" class="display" disabled>
+    <!-- keys -->
+    <div class="keys">
+      <!-- 4 rows of keys -->
+      <div class="row">
+        <button id="plus_minus" value="+-" class="operator">&#8723;</button>
+        <button id="sqrt" value="sqrt" class="operator">&#8730;</button>
+      </div>
+      <div class="row">
+        <button id="MRC" value="MRC" class="operator">mrc</button>
+        <button id="M-" value="M-" class="operator">M-</button>
+        <button id="M+" value="M+" class="operator">M+</button>
+        <button id="Percent" value="%" class="operator">%</button>
+      </div>
+      <div class="row">
+        <button id="n7" value="7">7</button>
+        <button id="n8" value="8">8</button>
+        <button id="n9" value="9">9</button>
+        <button id="add" value="+" class="operator">+</button>
+      </div>
+      <div class="row">
+        <button id="n4" value="4">4</button>
+        <button id="n5" value="5">5</button>
+        <button id="n6" value="6">6</button>
+        <button id="minus" value="-" class="operator">-</button>
+      </div>
+      <div class="row">
+        <button id="n1" value="1">1</button>
+        <button id="n2" value="2">2</button>
+        <button id="n3" value="3">3</button>
+        <button id="multiply" value="*" class="operator">*</button>
+      </div>
+      <div class="row">
+        <button id="clear" value="C" class="operator">C</button>
+        <button id="n0" value="0">0</button>
+        <button id="divide" value="/" class="operator">/</button>
+        <button id="equal" value="=" class="operator">=</button>
+      </div>
+    </div>
+  </div>
+  <!-- calculator body ends -->
+  
+  <script type="text/javascript" src="lib/calculator.js"></script>
+</body>
+</html>
