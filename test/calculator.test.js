@@ -345,29 +345,6 @@ describe('Calculator', function() {
       expect(document.getElementById('display').value).toBe('-1000');
     });
 
-    it('An addition of a negative integer addend should be treated as a subtraction of a poisitive integer subtrahend', function() {
-      document.getElementById('n5').click(); 
-      document.getElementById('n0').click(); 
-      document.getElementById('add').click();
-      document.getElementById('minus').click();
-      document.getElementById('n6').click();
-      document.getElementById('n0').click()
-      document.getElementById('equal').click();
-      expect(document.getElementById('display').value).toBe('-10');
-    });
-
-    it('An addition of a negative integer addend to another negative integer addend should be treated as a subtraction of a poisitive integer subtrahend', function() {
-      document.getElementById('minus').click();
-      document.getElementById('n5').click(); 
-      document.getElementById('n0').click(); 
-      document.getElementById('add').click();
-      document.getElementById('minus').click();
-      document.getElementById('n6').click();
-      document.getElementById('n0').click()
-      document.getElementById('equal').click();
-      expect(document.getElementById('display').value).toBe('-110');
-    });
-
     it('Should be able to subtract two large integers', function() {
       document.getElementById('n1').click();
       document.getElementById('n3').click();
@@ -819,4 +796,98 @@ describe('Calculator', function() {
       document.getElementById('MRC').click();
       expect(document.getElementById('display').value).toBe('0');
     });
+
+    // MEMORY PLUS
+
+    it('Should return zero when memory is empty', function() {
+      document.getElementById('M+').click();
+      expect(document.getElementById('display').value).toBe('0');
+    });
+
+    it('Should return the additon of what is in memory with the calculation of what is displayed', function() {
+      document.getElementById('n2').click(); 
+      document.getElementById('n0').click();
+      document.getElementById('n0').click();
+      document.getElementById('add').click(); 
+      document.getElementById('n5').click();
+      document.getElementById('n0').click();
+      document.getElementById('equal').click(); 
+      document.getElementById('clear').click(); 
+
+      document.getElementById('n2').click(); 
+      document.getElementById('n0').click();
+      document.getElementById('n0').click();
+      document.getElementById('add').click(); 
+      document.getElementById('n5').click();
+      document.getElementById('n0').click();
+      document.getElementById('M+').click();
+      expect(document.getElementById('display').value).toBe('500');
+    });
+
+    // MEMORY MINUS
+
+    it('Should return zero when memory is empty', function() {
+      document.getElementById('M-').click();
+      expect(document.getElementById('display').value).toBe('0');
+    });
+
+    it('Should return the subtraction of what is in memory with the calculation of what is displayed', function() {
+      document.getElementById('n2').click(); 
+      document.getElementById('n0').click();
+      document.getElementById('n0').click();
+      document.getElementById('add').click(); 
+      document.getElementById('n5').click();
+      document.getElementById('n0').click();
+      document.getElementById('equal').click(); 
+      document.getElementById('clear').click(); 
+
+      document.getElementById('n2').click(); 
+      document.getElementById('n0').click();
+      document.getElementById('n0').click();
+      document.getElementById('add').click(); 
+      document.getElementById('n5').click();
+      document.getElementById('n0').click();
+      document.getElementById('M-').click();
+      expect(document.getElementById('display').value).toBe('0');
+    });
+
+    // Multiple Consecutive Operators
+
+    it('Should not allow the consecutive operators symbols', function() {
+      document.getElementById('add').click(); 
+      document.getElementById('add').click(); 
+      document.getElementById('equal').click();
+      expect(document.getElementById('display').value).toBe('Error'); 
+    });
+
+    it('Should not allow the consecutive operators symbols', function() {
+      document.getElementById('minus').click(); 
+      document.getElementById('minus').click(); 
+      document.getElementById('equal').click();
+      expect(document.getElementById('display').value).toBe('Error'); 
+    });
+
+    it('Should not allow the consecutive operators symbols', function() {
+      document.getElementById('divide').click(); 
+      document.getElementById('divide').click(); 
+      document.getElementById('equal').click();
+      expect(document.getElementById('display').value).toBe('Error'); 
+    });
+
+    it('Should not allow the consecutive operators symbols', function() {
+      document.getElementById('multiply').click(); 
+      document.getElementById('multiply').click(); 
+      document.getElementById('equal').click();
+      expect(document.getElementById('display').value).toBe('Error'); 
+    });
+
+    it('Should not allow the consecutive operators symbols', function() {
+      document.getElementById('add').click(); 
+      document.getElementById('multiply').click(); 
+      document.getElementById('divide').click(); 
+      document.getElementById('minus').click();
+      document.getElementById('equal').click();
+      expect(document.getElementById('display').value).toBe('Error'); 
+    });
+
 });
