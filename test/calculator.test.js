@@ -789,9 +789,34 @@ describe('Calculator', function() {
     // MEMORY RECALL
     it('Should return what is in memory when the Memory Recall Operator is clicked', function() {
       document.getElementById('MRC').click();
-      console.log(document.getElementById('display').value);
-      console.log(memory);
       expect(document.getElementById('display').value).toBe(memory);
     });
 
+    it('Should allow what is recall from memory to be used in further operations', function() {
+      document.getElementById('n2').click(); 
+      document.getElementById('n0').click();
+      document.getElementById('n0').click();
+      document.getElementById('add').click(); 
+      document.getElementById('n5').click();
+      document.getElementById('n0').click();
+      document.getElementById('equal').click(); 
+      document.getElementById('clear').click();
+      document.getElementById('MRC').click();
+      document.getElementById('add').click(); 
+      document.getElementById('n5').click();
+      document.getElementById('n0').click();
+      document.getElementById('equal').click(); 
+      expect(document.getElementById('display').value).toBe('300');
+    });
+
+    it('Should replace what is displayed with what is in memory', function() {
+      document.getElementById('n2').click(); 
+      document.getElementById('n0').click();
+      document.getElementById('n0').click();
+      document.getElementById('add').click(); 
+      document.getElementById('n5').click();
+      document.getElementById('n0').click();
+      document.getElementById('MRC').click();
+      expect(document.getElementById('display').value).toBe('0');
+    });
 });
