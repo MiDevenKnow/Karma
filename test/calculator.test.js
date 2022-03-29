@@ -18,7 +18,7 @@ describe('Calculator', function() {
             <div class="row">
               <button id="MRC" value="MRC" class="operator">mrc</button>
               <button id="M-" value="M-" class="operator">M-</button>
-              <button id="M+" value="M+" class="operator">M+</button>
+              <button id="M-add" value="M+" class="operator">M+</button>
               <button id="Percent" value="%" class="operator">%</button>
             </div>
             <div class="row">
@@ -162,6 +162,14 @@ describe('Calculator', function() {
 
     //ADDITION 
 
+    it('should return 0 for 0 + 0', function() {
+      document.getElementById('n0').click(); 
+      document.getElementById('add').click(); 
+      document.getElementById('n0').click(); 
+      document.getElementById('equal').click(); 
+      expect(document.getElementById('display').value).toBe('0');
+    });
+
     //Adding Two Positive Numbers
     it('Should be able to add two positive integers numbers', function() {
       document.getElementById('n7').click(); 
@@ -180,6 +188,24 @@ describe('Calculator', function() {
       expect(document.getElementById('display').value).toBe('-7');
     });
 
+    it('Should ignore the starting division sign and carry out normal calculation', function() {
+      document.getElementById('divide').click();
+      document.getElementById('n7').click(); 
+      document.getElementById('add').click();
+      document.getElementById('n3').click()
+      document.getElementById('equal').click();
+      expect(document.getElementById('display').value).toBe('10');
+    });
+
+    it('Should ignore the multiplication sign and carry out normal calculation', function() {
+      document.getElementById('multiply').click();
+      document.getElementById('n7').click(); 
+      document.getElementById('minus').click();
+      document.getElementById('n3').click()
+      document.getElementById('equal').click();
+      expect(document.getElementById('display').value).toBe('4');
+    });
+
     it('Should be able to add zero and a positive integer', function() {
       document.getElementById('n7').click(); 
       document.getElementById('add').click();
@@ -195,6 +221,73 @@ describe('Calculator', function() {
       document.getElementById('n7').click()
       document.getElementById('equal').click();
       expect(document.getElementById('display').value).toBe('0');
+    });
+
+    it('should return 800 for 000450 + 00350 ', function() { 
+      document.getElementById('n0').click(); 
+      document.getElementById('n0').click(); 
+      document.getElementById('n0').click(); 
+      document.getElementById('n4').click(); 
+      document.getElementById('n5').click(); 
+      document.getElementById('n0').click(); 
+      document.getElementById('add').click(); 
+      document.getElementById('n0').click(); 
+      document.getElementById('n0').click(); 
+      document.getElementById('n3').click(); 
+      document.getElementById('n5').click(); 
+      document.getElementById('n0').click(); 
+      document.getElementById('equal').click(); 
+      expect(document.getElementById('display').value).toBe('800');
+    });
+
+    it('should return 450 for 000450 + 000 ', function() { 
+      document.getElementById('n0').click(); 
+      document.getElementById('n0').click(); 
+      document.getElementById('n0').click(); 
+      document.getElementById('n4').click(); 
+      document.getElementById('n5').click(); 
+      document.getElementById('n0').click(); 
+      document.getElementById('add').click(); 
+      document.getElementById('n0').click(); 
+      document.getElementById('n0').click();  
+      document.getElementById('n0').click(); 
+      document.getElementById('equal').click(); 
+      expect(document.getElementById('display').value).toBe('450');
+    });
+
+    it('should return 3.142857142857143 for 22 - 0000 / 7', function() { 
+      document.getElementById('n2').click(); 
+      document.getElementById('n2').click(); 
+      document.getElementById('minus').click(); 
+      document.getElementById('n0').click(); 
+      document.getElementById('n0').click(); 
+      document.getElementById('n0').click(); 
+      document.getElementById('n0').click(); 
+      document.getElementById('divide').click(); 
+      document.getElementById('n7').click(); 
+      document.getElementById('equal').click(); 
+      expect(document.getElementById('display').value).toBe('3.142857142857143');
+    });
+
+
+    it('should return 450 for 000450 + 000 + 0001', function() { 
+      document.getElementById('n0').click(); 
+      document.getElementById('n0').click(); 
+      document.getElementById('n0').click(); 
+      document.getElementById('n4').click(); 
+      document.getElementById('n5').click(); 
+      document.getElementById('n0').click(); 
+      document.getElementById('add').click(); 
+      document.getElementById('n0').click(); 
+      document.getElementById('n0').click();  
+      document.getElementById('n0').click(); 
+      document.getElementById('add').click(); 
+      document.getElementById('n0').click(); 
+      document.getElementById('n0').click();  
+      document.getElementById('n0').click(); 
+      document.getElementById('n1').click(); 
+      document.getElementById('equal').click(); 
+      expect(document.getElementById('display').value).toBe('451');
     });
 
     it('Should be able to add two large positive integers', function() {
@@ -788,7 +881,7 @@ describe('Calculator', function() {
     // MEMORY PLUS
 
     it('Should return zero when memory is empty', function() {
-      document.getElementById('M+').click();
+      document.getElementById('M-add').click();
       expect(document.getElementById('display').value).toBe('0');
     });
 
@@ -808,7 +901,7 @@ describe('Calculator', function() {
       document.getElementById('add').click(); 
       document.getElementById('n5').click();
       document.getElementById('n0').click();
-      document.getElementById('M+').click();
+      document.getElementById('M-add').click();
       expect(document.getElementById('display').value).toBe('500');
     });
 
